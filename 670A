@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define X first
+#define Y second
+#define pb push_back
+#define mp make_pair
+#define sz(a) ((int)(a).size())
+#define all(a) (a).begin(),(a).end()
+#define DEBUG(x) {cout<< #x <<" = " << x 6<<endl;}
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> ii;
+
+
+int main(){
+    //freopen("in.txt","r",stdin);
+    //freopen("out.txt","w",stdout);
+    //ios::sync_with_stdio(false);
+    int n;
+    cin >> n;
+    int mi=0, ma=0;
+    if (n < 2){
+        mi = 0;
+        ma = n;
+    }
+    else
+    if (n<6){
+        mi = 0;
+        ma = 2;
+    }
+    else
+    if (n == 6){
+        mi = 1;
+        ma = 2;
+    }
+    else
+    if (n >= 7){
+        mi = (n/7)*2;
+        ma  = (n%7 >= 2 ? mi + 2 : mi + (n%7) );
+        if ( n%7 ==6)
+            mi++;
+    }
+    cout<<mi<< " " <<ma;
+
+    return 0;
+}
