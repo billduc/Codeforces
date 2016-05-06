@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define X first
+#define Y second
+#define pb push_back
+#define mp make_pair
+#define sz(a) ((int)(a).size())
+#define all(a) (a).begin(),(a).end()
+#define DEBUG(x) {cout<< #x <<" = " << x <<endl;}
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> ii;
+
+map <int, int> mapScie;
+vi a,b;
+vector <pair<int, int> > res;
+
+
+int main(){
+    //freopen("in.txt","r",stdin);
+    //freopen("out.txt","w",stdout);
+    //ios::sync_with_stdio(false);
+    int n;
+    cin >> n;
+    for(int i = 0; i < n; ++i){
+        int l;
+        cin>>l;
+        mapScie[l]++;
+    }
+    int m;
+    cin>>m;
+    for(int i = 0; i < m; ++i){
+        int x;
+        cin>>x;
+        a.pb(x);
+    }
+    for(int i = 0; i < m; ++i){
+        int x;
+        cin>>x;
+        b.pb(x);
+    }
+
+    for(int i = 0; i < m; ++i){
+        res.pb(make_pair( mapScie[a[i]],mapScie[b[i]] ));
+    }
+
+    pair<int, int> result = make_pair(-1,-1);
+    int pos =  -1;
+    for(int i = 0; i < m; ++i){
+        if (res[i].X > result.X || (res[i].X == result.X && res[i].Y > result.Y ))
+            {
+                pos = i;
+                result = res[i];
+            }
+    }
+    cout<<pos+1;
+    return 0;
+}
